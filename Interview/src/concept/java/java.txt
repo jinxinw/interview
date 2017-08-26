@@ -1,0 +1,21 @@
+Java Concept
+
+Concepts:
+Polymorphism
+Overriding (runtime): a class method in a child class has the same name and signature as a method in the parent class.
+Overloading (compile): same method names with:
+    - Different method signature and different number or type of parameters.
+    - Same method signature but the different number of parameters.
+    - Same method signature and same number of parameters but of different type
+
+Inheritance: Inheritance allows a Child class to inherit properties from its parent class. Only properties with access modifier public and protected can be accessed in child class.
+Java does not support multiple inheritance of Class (extend multiple classes)
+Java allows multiple inheritance of Interface
+    - all the methods in interface are public and abstract
+    = all the fields are public, static and final
+
+Abstraction: Abstraction is a way of converting real world objects in terms of class
+Encapsulation: The encapsulation is achieved by combining the methods and attribute into a class. The class acts like a container encapsulating the properties.
+Association: Association is a relationship where all object have their own lifecycle and there is no owner.
+Aggregation: Aggregation is a specialized form of Association where all objects have their own lifecycle but there is ownership and child object can not belongs to another parent object.
+Composition: Composition is specialized form of Aggregation and we can call this as a "death" relationship. It is a strong type of Aggregation. Child object does not have their lifecycle and if parent object deletes all child object will also be deleted.
