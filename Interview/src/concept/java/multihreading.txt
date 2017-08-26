@@ -1,0 +1,31 @@
+Java Multithreading
+Threads are light-weight process within a process
+
+Thread can be created by extending Thread class
+class MyClass extends Thread {
+    public void run() {
+        ...
+    }
+}
+
+Or implements Runnable interface
+class MyClass implements Runnable {
+    public void run() {
+        ...
+    }   
+}
+
+thread state
+new (create a thread)
+runnable (start thread)
+terminated(run method exits)
+blocked (aquire a lock)
+waiting (waiting for notification)
+timed waiting(waiting for notification or timeouts)
+
+Synchronized block ensures only one thread running at a time, only one thread can access the resource at the same time
+Semaphore controls access to a shared resource through the use of a counter
+sem.aquire();
+...
+sem.release();
+
