@@ -12,7 +12,7 @@ Inheritance: Inheritance allows a Child class to inherit properties from its par
 Java does not support multiple inheritance of Class (extend multiple classes)
 Java allows multiple inheritance of Interface
     - all the methods in interface are public and abstract
-    = all the fields are public, static and final
+    - all the fields are public, static and final
 
 Abstraction is a way of converting real world objects in terms of class
 Encapsulation is achieved by combining the methods and attribute into a class. The class acts like a container encapsulating the properties.
@@ -24,3 +24,5 @@ Garbage Collector
 Garbage Collector is to free heap memory by destroying unreachable objects
 Garbage Collector is always running in the background
 Finalize: before destroying the object, GC will call finalize() method to perform cleanup activities
+
+Questions:
