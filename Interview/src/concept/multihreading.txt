@@ -29,22 +29,6 @@ sem.aquire();
 ...
 sem.release();
 
-What happens when you type a URL in web browser?
-A URL may contain request to HTML, image file or any other type.
-
-If content of the typed URL is in cache and fresh, then display the content.
-Else find IP address for the domain so that a TCP connection can be setup. Browser does a DNS lookup.
-Browser needs to know IP address for a url, so that it can setup a TCP connection.  This is why browser needs DNS service.  Browser first looks for URL-IP mapping browser cache, then in OS cache. If all caches are empty, then it makes a recursive query to the local DNS server.   The local DNS server provides the IP address.
-Browser sets up a TCP connection using three way handshake.
-Browser sends a HTTP request.
-Server has a web server like Apache, IIS running that handles incoming HTTP request and sends a HTTP response.
-Browser receives the HTTP response and renders the content.
-What is DHCP, how does it work?
-
-The idea of DHCP (Dynamic Host Configuration Protocol) is to enable devices to get IP address without any manual configuration.
-The device sends a broadcast message saying “I am new here”
-The DHCP server sees the message and responds back to the device and typically allocates an IP address. All other devices on network ignore the message of new device as they are not DHCP server.
-
 What is a Thread? What are the differences between process and thread?
 A thread is a single sequence stream within in a process. Because threads have some of the properties of processes, they are sometimes called lightweight processes. 
 
