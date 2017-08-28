@@ -26,3 +26,26 @@ Garbage Collector is always running in the background
 Finalize: before destroying the object, GC will call finalize() method to perform cleanup activities
 
 Questions:
+1. effect of private constructor
+the class cannot be inherited
+the only way to create an instance of the class it to provide a static public method like Factory Pattern
+
+2. does the finally block get executed if we insert a return statement inside the try block
+Yes in normal case except
+the virtual machine exits or the thread killed
+
+3. difference between final, finally and finalize
+final variable - the variable or the reference variable cannot be modified
+final method - cannot be overridden
+final class - cannot be subclassed
+finally - try-catch-finally blocks
+finalize - garbage collection
+
+4. java generics
+eliminated the parameterized types when the source code is translated to the JVM byte code
+
+5. object reflection
+get reflective information about Java classes and objects
+- get the information about the methods and fields present inside the class at runtime
+- create new instance of a class
+- get and set the object fields directly by getting field reference, regardless of what the access modifier is
