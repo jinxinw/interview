@@ -15,3 +15,7 @@ What is DHCP, how does it work?
 The idea of DHCP (Dynamic Host Configuration Protocol) is to enable devices to get IP address without any manual configuration.
 The device sends a broadcast message saying “I am new here”
 The DHCP server sees the message and responds back to the device and typically allocates an IP address. All other devices on network ignore the message of new device as they are not DHCP server.
+
+HTTP and HTTPS difference
+Using HTTPS, the computers agree on a "code" between them, and then they scramble the messages using that "code" so that no one in between can read them. This keeps your information safe from hackers.
+They use the "code" on a Secure Sockets Layer (SSL), sometimes called Transport Layer Security (TLS) to send the information back and forth.

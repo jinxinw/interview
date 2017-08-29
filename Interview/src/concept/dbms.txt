@@ -3,3 +3,22 @@ Ans: It is a process of analyzing the given relation schemas based on their func
 1) Minimizing Redundancy
 2) Minimizing the Insertion, Deletion, And Update Anomalies
 
+Denormalization
+store redundant data if the query has been repeated often and commonly used to create higly scalable systems
+avoid costly join in a relational database
+cons
+update and inserts are more expensive
+data maybe inconsistent
+data redundancy requires more storage
+pros
+query data is faster and quicker
+
+JOINs
+INNER JOIN - the result set contains only the data where the criteria match
+OUTER JOIN - contains some records that have no matching record
+    LEFT OUTER JOIN - contains all the records from the left table
+    RIGHT OUTER JOIN - contains all the records from the right table
+    FULL OUTER JOIN - all the records from all the tables
+
+
+

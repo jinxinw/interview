@@ -1,0 +1,99 @@
+A message containing letters from A-Z is being encoded to numbers using the following mapping:
+
+'A' -> 1
+'B' -> 2
+...
+'Z' -> 26
+Given an encoded message containing digits, determine the total number of ways to decode it.
+
+For example,
+Given encoded message "22", it could be decoded as "BB" (2 2) or "V" (22).
+
+The number of ways decoding "22" is 2
+
+hello 
+
+"2234123"
+
+f[0] = 1
+f[1] = 1;
+f[2] = 2;
+f[3] = 3;
+
+
+"261"
+
+dp[0] = 1
+dp[1] = 1
+dp[2] = 2 6 is not encodeable and 6 can encode dp[1] = 2;
+dp[3] = 61 or 1 dp[2] = 2
+
+f[n] = f[n - 2] + f[n - 1]
+
+public int decodeWays(String s) {
+    if (s == null || s.length() == 0) {
+        return 0;
+    }
+    int[] dp = new int[s.length() + 1];
+    dp[0] = 1;
+    dp[1] = canDecode(s.substring(0, 1)) ? 1 : 0;
+    for (int i = 2; i <= s.length(); i++) {
+        dp[i] = 0;
+        if (canDecode(s.substring(i - 2, i))) {
+            dp[i] += dp[i - 2];
+        }
+        if (canDecode(s.substring(i - 1, i))) {
+            dp[i] += dp[i - 1];
+        }
+    }
+    return dp[s.length()];
+}
+
+private boolean canDecode(String s) {
+    if (s.length() == 0) {
+        return !s.equals("0");
+    } else {
+        if (s.charAt(0) == '0') {
+            return false;
+        }
+        int encoded = Integer.parseInt(s);
+        return (encoded >= 10) && (encoded <= 26);
+    }
+}
+
+2. Given an array of n positive integers and a positive integer s, find the minimal length of a subarray of which the sum ≥ s. If there isn't one, return 0 instead.
+
+For example, given the array [2,3,1,2,4,3] and s = 7, the subarray [4,3] has the minimal length of 2 under the problem constraint
+
+[2, 3, 1, 2, 4 ,3]
+
+i - 2
+j -> 2 ,3 ,1, 2
+distance = j - i
+i -> 3
+
+public int minLength(int[] nums, int s) {
+    if (nums == null || nums.length == 0) {
+        return 0;
+    }
+    int sum = 0;
+    int res = Integer.MAX_VALUE;
+    int j = 0;
+    for (int i = 0; i < nums.length(); i++) {
+        while(j < nums.length && sum < s) {
+            sum += nums[j];
+            j++;
+        }
+        if (sum >= s) {
+            res = Math.min(res, j - i);
+        }
+        sum -= nums[i];
+    }
+    if (res != Integer.MAX_VALUE) {
+        return res;
+    } else {
+        return 0;
+    }
+}
+
+
