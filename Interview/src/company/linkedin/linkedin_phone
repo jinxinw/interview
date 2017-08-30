@@ -1,0 +1,95 @@
+public class RetainBestCache<K, T extends Rankable> {
+
+    private Map<K, T> map;
+    private PriorityQueue<Map.Entry<K, T>> heap;
+    private int entriesToRetain;
+    private DataSource<K, T> ds;
+ 
+    /* Constructor with a data source (assumed to be slow) and a cache size */
+    public RetainBestCache(DataSource<K,T> ds, int entriesToRetain) {
+        // Implementation here
+        this.entriesToRetain = entriesToRetain;
+        this.ds = ds;
+        map = new HashMap<>();
+        heap = new PriorityQueue<>(new Comparator<Map.Entry<K, T>>(){
+            public int compare (Map.Entry<k, T> entry1, Map.Entry<K, T> entry2) {
+                if (entry1.getValue().getRank() < entry2.getValue().getRank()) {
+                    return -1;
+                } else if (entry1.getValue().getRank() > entry2.getValue().getRank()) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+        });
+    }
+ 
+    /* Gets some data. If possible, retrieves it from cache to be fast. If the data is not cached,
+     * retrieves it from the data source. If the cache is full, attempt to cache the returned data,
+     * evicting the T with lowest rank among the ones that it has available
+     * If there is a tie, the cache may choose any T with lowest rank to evict.
+     */
+     
+     
+     /*
+     * 1, 1; 2, 2; 3, 3; 4, 4;
+     * new retainBestCache(ds, 2)
+     * get(1) -> 1;
+     * get(2) -> 2;
+     * get(3) -> pop the 1,1, return 3
+     * get(4) -> pop the 2,2 return 4;
+     * get(1) -> pop the 3,3 add 1,1 again, return 1;
+     
+     
+     ListNode{
+         int key,
+         int val,
+         int rank = 0;
+         ListNode pre, next;
+     }
+     
+     Map<key, ListNode> map;
+     ListNode head, tail;
+     PriorityQueue<ListNode> heap;
+     Map<K, Integer> rank
+     
+     removeNode = heap.peek();
+     removeNode.pre.next = removeNode.next;
+     map.remove(removeNode.key);
+     
+     
+     
+     */
+    public T get(K key) {
+        // Implementation here
+        if (map.containsKey(key)) {
+            return map.get(key);
+        } else {
+            if (map.size() == entriesToRetain) {
+                Map.Entry<K, T> entryToRemove = heap.peek();
+                map.remove(entryToRemove.getKey());
+            }
+            map.put(key, ds.get(key));
+            heap.offer(map.getEntry(key));
+            return ds.get(key);
+        }
+    }
+}
+ 
+/*
+ * For reference, here are the Rankable and DataSource interfaces.
+ * You do not need to implement them, and should not make assumptions
+ * about their implementations.
+ */
+ 
+public interface Rankable {
+    /**
+     * Returns the Rank of this object, using some algorithm and potentially
+     * the internal state of the Rankable.
+     */
+    long getRank();
+}
+ 
+public interface DataSource<K, T extends Rankable> {
+    T get (K key);
+}
