@@ -10,7 +10,6 @@ public class Fruit {
             return 0;
         }
         int index1 = 0;
-        int count = 0;
         int index3 = 0;
         while(index3 < shoppingCart.size() && index1 < codeList.size()) {
        
@@ -28,12 +27,11 @@ public class Fruit {
             if (found && i == list.size()) {
                 index1++;
                 index3 = index3 + i;
-                count++;
             } else {
                 index3++;
             }
         }
-        if (count == codeList.size()) {
+        if (index1 == codeList.size()) {
             return 1;
         } else {
             return 0;
@@ -65,7 +63,7 @@ public class Fruit {
         list2.add("banana");
         list2.add("orange");
         list2.add("pear");
-        //list2.add("orange");
+        list2.add("orange");
         list2.add("grape");
         
         
