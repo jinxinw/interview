@@ -47,6 +47,7 @@ public class Golf {
             if (step == -1) {
                 return -1;
             }
+            System.out.println(step + "  " + end.h);
             sum = sum + step + end.h;
             start = end;
         }
@@ -97,8 +98,8 @@ public class Golf {
                         }
                     }
                 }
-                step++;
             }
+            step++;
         }
         return -1;
     }
@@ -106,6 +107,7 @@ public class Golf {
     public static void main(String[] args) {
         Golf g = new Golf();
         List<List<Integer>> fields = new ArrayList<>();
+        fields.add(new ArrayList<>());
         fields.add(new ArrayList<>());
         fields.add(new ArrayList<>());
         fields.get(0).add(1);
@@ -116,6 +118,10 @@ public class Golf {
         fields.get(1).add(1);
         fields.get(1).add(1);
         fields.get(1).add(1);
+        fields.get(2).add(1);
+        fields.get(2).add(1);
+        fields.get(2).add(4);
+        fields.get(2).add(1);
         int res = g.flatFields(fields);
         System.out.println(res);
     }
