@@ -17,9 +17,13 @@ public class Fruit {
             List<String> list = codeList.get(index1);
             boolean found = true;
             int i = 0;
-            //System.out.println(index1);
+            System.out.println(index1);
+            System.out.println("index3 " + index3);
             while(i < list.size() && index3 + i < shoppingCart.size()) {
                 if (!list.get(i).equals("anything") && !list.get(i).equals(shoppingCart.get(index3 + i))) {
+                    if (index3 == 6) {
+                        System.out.println("here " + i);
+                    }
                     found = false;
                     break;
                 }
@@ -55,7 +59,7 @@ public class Fruit {
         
         list.get(2).add("pear");
         list.get(2).add("orange");
-        list.get(2).add("grape");
+        list.get(2).add("anything");
         
         List<String> list2 = new ArrayList<>();
         list2.add("orange");
@@ -65,7 +69,7 @@ public class Fruit {
         list2.add("banana");
         list2.add("orange");
         list2.add("pear");
-        //list2.add("orange");
+        list2.add("orange");
         list2.add("grape");
         
         
