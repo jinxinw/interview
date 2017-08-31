@@ -38,6 +38,7 @@ public class MovieNetwork {
         Set<Integer> visited = new HashSet<>();
         Queue<Movie> queue = new LinkedList<>();
         queue.offer(movie);
+        visited.add(movie.id);
         while (!queue.isEmpty()) {
             Movie cur = queue.poll();
             if (!movie.equals(cur)) {
@@ -99,7 +100,7 @@ public class MovieNetwork {
         list.get(0).neighbors.add(list.get(8));
         list.get(8).neighbors.add(list.get(0));
 
-        System.out.println(mn.find(3, list.get(9)));
+        System.out.println(mn.find(5, list.get(2)));
     }
 
 }

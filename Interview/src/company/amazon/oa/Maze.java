@@ -1,5 +1,8 @@
 package company.amazon.oa;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Maze {
 
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
@@ -38,4 +41,39 @@ public class Maze {
         }
         return dp[m - 1][n - 1];
     }
+
+    private int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+
+    public int findMinSteps(int[][] maze, int[] start, int[] end) {
+        int steps = 0;
+        Queue<int[]> queue = new LinkedList<>();
+        int m = maze.length;
+        int n = maze[0].length;
+        int[][] visited = new int[m][n];
+        queue.offer(start);
+        visited[start[0]][start[1]] = 1;
+        while (!queue.isEmpty()) {
+            int[] cur = queue.poll();
+            for (int[] d : directions) {
+                int i = cur[0] + d[0];
+                int j = cur[1] + d[1];
+                if (i >= 0 && i < m && j >= 0 && j < n && visited[i][j] == 0 && maze[i][j] == 0) {
+                    visited[i][j] = visited[cur[0]][cur[1]] + 1;
+                    if (i == end[0] && j == end[1]) {
+                        return visited[i][j];
+                    }
+                    queue.offer(new int[]{i, j});
+                }
+            }
+        }
+        return -1;
+    }
+    
+    public static void main (String[] args) {
+        Maze m = new Maze();
+        int[][] maze = {{0,0,0,0,0}, {1,1,1,1,0}, {0,0,0,0,0}, {0,1,1,1,1}, {0,0,0,0,0}};
+        int res = m.findMinSteps(maze, new int[] {0, 0}, new int[]{4, 4});
+        System.out.println(res);
+    }
+
 }
