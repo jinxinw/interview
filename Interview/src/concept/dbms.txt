@@ -20,5 +20,6 @@ OUTER JOIN - contains some records that have no matching record
     RIGHT OUTER JOIN - contains all the records from the right table
     FULL OUTER JOIN - all the records from all the tables
 
-
+ Define database model.
+A data model determining fundamentally how data can be stored, manipulated and organised and the structure of the database logically is called database model.
 

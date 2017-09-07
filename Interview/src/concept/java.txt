@@ -20,6 +20,11 @@ Association is a relationship where all object have their own lifecycle and ther
 Aggregation is a specialized form of Association where all objects have their own lifecycle but there is ownership and child object can not belongs to another parent object.
 Composition is specialized form of Aggregation and we can call this as a "death" relationship. It is a strong type of Aggregation. Child object does not have their lifecycle and if parent object deletes all child object will also be deleted.
 
+Open/Closed Principle - software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification
+Coupling - Coupling describes the degree of dependency between one entity to another entity.
+Loose coupling is good because we don't want the components of our system to heavily depend on each other. We want to keep our system modular, where we can safely change one part without affecting the other.
+
+
 Garbage Collector
 Garbage Collector is to free heap memory by destroying unreachable objects
 Garbage Collector is always running in the background

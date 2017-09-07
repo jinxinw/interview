@@ -1,0 +1,114 @@
+Write a function to reverse a string.
+
+public void reverse(char[] s) {
+    if (s == null || s.length <= 1) {
+        return;
+    }
+    int left = 0;
+    int right = s.length - 1;
+    while(left < right) {
+        char tmp = s[left];
+        s[left] = s[right];
+        s[right] = tmp;
+        left++;
+        right--;
+    }
+}
+
+s = null
+s = []
+
+[a,b,c,d,e]
+left = 0; right = 4
+[e,b,c,d,a]
+left = 1; right = 3
+[e,d,c,b,a]
+left = 2; right = 2
+
+[a,b,c,d]
+
+
+design a hash table
+public class MyHashTable<Integer> {
+    class Node {
+        int key;
+        int value;
+        Node(int key, int value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
+
+    private List<List<Node>> list;
+    private int capacity;
+    
+    public MyHashTable(int capacity) {
+        this.list = new ArrayList<>();
+        for (int i = 0; i < capacity; i++) {
+            list.add(new LinkedList<>());
+        }
+        this.capacity - capacity;
+    } 
+    
+    public void put(int key, int value) {
+        int index = key % capacity;
+        if (list.get(index).isEmpty) {
+            list.get(index).add(new Node(key, value));
+        } else {
+            boolean exist = false;
+            for (Node n : list.get(index)) {
+                if (n.key == key) {
+                    n.value = value;
+                    exist = true;
+                    break;
+                }
+            }
+            if (!exist) {
+                list.get(index).add(new Node(key, value));
+            }
+        }
+    }
+    
+    public Integer get(int key) {
+        int index = key % capacity;
+        if (list.get(index).isEmpty()) {
+            return null;
+        } else {
+            for (Node n : list.get(index)) {
+                if (n.key == key) {
+                    return n.value;
+                }
+            }
+        }
+        return null;
+    }
+}
+
+
+
+
+Fi
+1, 1, 2, 3, 5, 8, ... 
+f[0] = 1
+f[1] = 1
+f[2] = f[0] + f[1];
+..
+f[n] = f[n - 1] + f[n - 2];
+
+
+public int fibo(int n) {
+    if (n <= 0) {
+        return 0;
+    }
+    if (n == 1 || n == 2) {
+        return 1;
+    }
+    int[] f = new int[n];
+    f[0] = 1;
+    f[1] = 1;
+    for (int i = 2; i < n; i++) {
+        f[i] = f[i - 1] + f[i - 2];
+    }
+    return f[n - 1];
+}
+
