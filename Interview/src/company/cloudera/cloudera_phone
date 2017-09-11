@@ -1,0 +1,100 @@
+// Implement a fixed-capacity queue that uses a fixed-sized array for storage.
+// The queue should have two methods: put() and take()
+
+class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, world!");
+    }
+    
+    // 1. Check QueueFull condition
+    // 2. check queue empty condition
+    // 3. validate the input new Myqueue<>(negatibe number)
+    // 4. create threads to put and take
+    // 5. take and put randomly
+   
+    class MyQueue<E> {
+        E[] array;
+        int capacity;
+        int head;
+        int tail;
+        int size;
+        
+        public MyQueue(int capacity) throws Exception {
+            if (capacity <= 0) {
+                throw new Expcetion(..)
+            }
+            this.array = new E[capacity];
+            this.capacity = capacity;
+            this.head = -1;
+            this.tail = -1;
+            this.size = 0;
+        }
+        
+        public synchronized boolean put(E value) {
+            if (size == capacity) {
+                return false;
+            }
+            if (head == -1) {
+                array[0] = value;
+                head = 0;
+                tail = 0;
+            } else {
+                head = (head + 1) % capacity;
+                array[head] = value;
+            }
+            size++;
+            return true;
+        }
+        
+        public synchronized E take() {
+            if (size == 0) {
+                head = -1;
+                tail = -1;
+                return null;
+            }
+            int value = array[tail];
+            tail = (tail + 1) % capacity;
+            size--;
+            return value;
+        }
+        
+    }
+    
+    
+    Class Test {
+        MyQueue<Integer> queue;
+        int capacity;
+        
+        Public Test(int capacity) {
+            queue = new MyQueue<>(capacity);
+            int capacity;
+        }
+        
+        public void produce(int value) {
+                synchronized (this) {
+                    while(queue.size() == capacity) {
+                        wait();
+                    }
+                    queue.put(value);
+                    notifyAll();
+                        
+                }
+        }
+        
+        public int comsumer() {
+                synchronized (this) {
+                    while(queue.size() == 0) {
+                        wait();
+                    }
+                    int value = queue.take();
+                    notifyAll();
+                    return value;
+                }
+
+        }
+        
+    }
+    
+    
+    
+}
