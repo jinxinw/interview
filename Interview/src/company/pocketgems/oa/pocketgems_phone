@@ -1,0 +1,103 @@
+import java.io.*;
+import java.util.*;
+
+/*
+ * To execute Java, please define "static void main" on a class
+ * named Solution.
+ *
+ * If you need more classes, simply define them inline.
+ */
+
+class Solution {
+  public static void main(String[] args) {
+    ArrayList<String> strings = new ArrayList<String>();
+    strings.add("Hello, World!");
+    strings.add("Welcome to CoderPad.");
+    strings.add("This pad is running Java 8.");
+
+    for (String string : strings) {
+      System.out.println(string);
+    }
+  }
+  
+  class Item {
+    int categary;
+    int size;
+    int cost;
+    
+    ...
+  }
+  
+  public int putInBoxes(Map<Item, Integer> items, int n, int size) {
+    // dp[i][j] for the first i boxes, the minumun cost with the size j
+    // dp[i][j] = min(dp[i - 1][j - k] + k.cost)
+    
+    int totalSize = 0;
+    for (Item key : items.keySet()) {
+      totalSize += key.size * map.get(key);
+    }
+    int[][] dp = new int[n + 1][totalSize + 1];
+    dp[0][0] = 0;
+    for (int i = 1; i <= n; i++) {
+      dp[i][0] = 0;
+    }
+    for (int j = 1; j <= totalSize; j++) {
+      dp[0][j] = 0;
+    }
+    for (int i = 1; i <= n; i++) {
+      for (int j = 1; j <= totalSize()) {
+        dp[i][j] = Integer.MAX_VALUE;
+        Item picked = null;
+        int pickedTimes = 0;
+        for (Item key : items.keySet()) {
+          if (map.get(key) == 0) {
+            continue;
+          }
+          if (dp[i - 1][j - key.size] == Integer.MAX_VALUE) {
+            dp[i][j] = Integer.MAX_VALUE;
+          } else {
+            int times = map.get(key) < size / key.size ? map.get(key) : size / key.size;
+            
+            dp[i][j] = Math.min(dp[i][j], dp[i - 1][j - key.size * times] + key.cost * times);
+            if (dp[i][j] == dp[i - 1][j - key.size] + key.cost) {
+              pickedItem = key;
+              pickedTimes = times;
+            }
+        }
+        map.put(picked, map.get(picked) - pickedTimes);
+      }
+    }
+      
+      for (int j = totalSize; j >= 1; j--) {
+        if (dp[n][j] != Integer.MAX_VALUE) {
+          return dp[n][j];
+        }
+      }
+    
+  }
+}
+
+
+/* 
+Your previous Plain Text content is preserved below:
+
+This is just a simple shared plaintext pad, with no execution capabilities.
+
+When you know what language you'd like to use for your interview,
+simply choose it from the dropdown in the top bar.
+
+You can also change the default language your pads are created with
+in your account settings: https://coderpad.io/settings
+
+Enjoy your interview!
+
+boxes with same size - n, size
+items int m catagory (all the item in the catagory with same size and cost)
+
+get max size but with min cost
+
+one box has one catagory
+
+public int 
+
+ */
