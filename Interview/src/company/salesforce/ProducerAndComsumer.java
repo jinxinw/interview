@@ -93,7 +93,7 @@ public class ProducerAndComsumer {
         // Function called by consumer thread
         public void consume() throws InterruptedException {
             while (true) {
-                synchronized (this) {
+                synchronized (list) {
                     // consumer thread waits while list
                     // is empty
                     while (list.size() == 0) {
