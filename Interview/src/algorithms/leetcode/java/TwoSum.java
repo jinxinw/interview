@@ -1,4 +1,4 @@
-package algorithms.leetcode;
+package algorithms.leetcode.java;
 
 /**
  * Created by xinweijin on 1/28/18.

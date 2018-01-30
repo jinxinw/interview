@@ -1,4 +1,4 @@
-package algorithms.leetcode;
+package algorithms.leetcode.java;
 
 /**
  * Created by xinweijin on 1/28/18.
@@ -6,4 +6,5 @@ package algorithms.leetcode;
  * https://leetcode.com/problems/global-and-local-inversions/description/
  */
 public class GlobalAndLocalInversions {
+    //TODO 
 }
